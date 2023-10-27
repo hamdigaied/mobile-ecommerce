@@ -35,7 +35,17 @@ const routes = [
             tabBarIcon: () => <Entypo name="info-with-circle" size={28} color="black" />,
             ...headerConfig
         }
-    }
+    },
+    {
+        name: "details/[id]",
+        options: {
+            title: "About",
+            tabBarIcon: () => <Entypo name="info-with-circle" size={28} color="black" />,
+            ...headerConfig,
+            href: null
+        }
+        
+    },
 ]
 
 export default routes

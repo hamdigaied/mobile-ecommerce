@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "name": "Monstera",
+        "price": 15,
+        "image": "https://th.bing.com/th/id/OIP.WB68iMsuwZAVkAo5z5fMHQAAAA?pid=ImgDet&rs=1"
+    },
+    {
+        "id": 2,
+        "name": "Ficus Lyrata",
+        "price": 16,
+        "image": "https://th.bing.com/th/id/OIP.WB68iMsuwZAVkAo5z5fMHQAAAA?pid=ImgDet&rs=1"
+    },
+    {
+        "id": 3,
+        "name": "Pothos Argenté",
+        "price": 9,
+        "image": "https://th.bing.com/th/id/OIP.WB68iMsuwZAVkAo5z5fMHQAAAA?pid=ImgDet&rs=1"
+    },
+    {
+        "id": 4,
+        "name": "Calathea",
+        "price": 20,
+        "image": "https://th.bing.com/th/id/OIP.WB68iMsuwZAVkAo5z5fMHQAAAA?pid=ImgDet&rs=1"
+    },
+    {
+        "id": 5,
+        "name": "Olivier",
+        "price": 25,
+        "image": "https://th.bing.com/th/id/OIP.WB68iMsuwZAVkAo5z5fMHQAAAA?pid=ImgDet&rs=1"
+    },
+    {
+        "id": 6,
+        "name": "Cactus",
+        "price": 6,
+        "image": "https://th.bing.com/th/id/OIP.WB68iMsuwZAVkAo5z5fMHQAAAA?pid=ImgDet&rs=1"
+    },
+    {
+        "id": 7,
+        "name": "Basilique",
+        "price": 5,
+        "image": "https://th.bing.com/th/id/OIP.WB68iMsuwZAVkAo5z5fMHQAAAA?pid=ImgDet&rs=1"
+    },
+    {
+        "id": 8,
+        "name": "Succulente",
+        "price": 8,
+        "image": "https://th.bing.com/th/id/OIP.WB68iMsuwZAVkAo5z5fMHQAAAA?pid=ImgDet&rs=1"
+    },
+    {
+        "id": 9,
+        "name": "Menthe",
+        "price": 4,
+        "image": "https://th.bing.com/th/id/OIP.WB68iMsuwZAVkAo5z5fMHQAAAA?pid=ImgDet&rs=1"
+    }
+]
