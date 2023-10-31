@@ -1,16 +1,17 @@
 import { useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { Dimensions, Image, Text, View } from 'react-native';
-import Banner from '../../components/Banner';
+import { Alert, Image, Text, TouchableWithoutFeedback, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import axios from 'axios';
 import { BASE_URL, DEVICE_WIDTH } from "../../config/env"
 import Carousel from 'react-native-reanimated-carousel';
 import Loader from '../../components/Loader';
+import { Entypo } from '@expo/vector-icons';
 
 export default function Details() {
     const [loading, setLoading] = useState(true)
     const [product, setProduct] = useState(null)
+    const [addedToWhishlist, setAddedToWhishlist] = useState(false)
     const { id } = useLocalSearchParams();
 
     useEffect(() => {
@@ -78,6 +79,23 @@ export default function Details() {
                                     </View>
                                 }
                                 <Text>{product?.description}</Text>
+
+                                <View style={{ display: "flex", flexDirection: "row", columnGap: 20 }}>
+                                    <TouchableWithoutFeedback onPress={() => Alert.alert(`${product.name} added to cart !`)}>
+                                        <View style={{ flexDirection: 'row', justifyContent: "center", marginTop: 10 }}>
+                                            <View style={{ backgroundColor: "orange", padding: 10, borderRadius: 10 }}>
+                                                <Text style={{ fontSize: 20 }}>Add to cart</Text>
+                                            </View>
+                                        </View>
+                                    </TouchableWithoutFeedback>
+                                    <TouchableWithoutFeedback onPress={() => setAddedToWhishlist(!addedToWhishlist)}>
+                                        <View style={{ flexDirection: 'row', justifyContent: "center", marginTop: 10 }}>
+                                            <View style={{ backgroundColor: "orange", padding: 10, borderRadius: 10 }}>
+                                                <Entypo name={addedToWhishlist ? "heart" : "heart-outlined"} size={24} color="black" />
+                                            </View>
+                                        </View>
+                                    </TouchableWithoutFeedback>
+                                </View>
                             </View>
                         </View>
                     </ScrollView>

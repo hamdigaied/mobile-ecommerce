@@ -21,23 +21,25 @@ export default function Main() {
             {loading && <Loader />}
             {
                 !loading &&
-                <Banner content="Explore" /> &&
-                <ScrollView>
-                    <View style={{ rowGap: 10, padding: 10, display: "flex", flexWrap: "wrap", justifyContent: "space-between", flexDirection: "row" }}>
-                        {
-                            products.map(product => (
-                                <Card
-                                    key={product.id}
-                                    id={product.id}
-                                    name={product.name}
-                                    price={product.price}
-                                    discount={product.discount}
-                                    image={product.images[0].directus_files_id}
-                                />
-                            ))
-                        }
-                    </View>
-                </ScrollView>
+                <>
+                    <ScrollView>
+                        <Banner content="Featured products" />
+                        <View style={{ rowGap: 10, padding: 10, display: "flex", flexWrap: "wrap", justifyContent: "space-between", flexDirection: "row" }}>
+                            {
+                                products.map(product => (
+                                    <Card
+                                        key={product.id}
+                                        id={product.id}
+                                        name={product.name}
+                                        price={product.price}
+                                        discount={product.discount}
+                                        image={product.images[0].directus_files_id}
+                                    />
+                                ))
+                            }
+                        </View>
+                    </ScrollView>
+                </>
             }
         </View>
     );
