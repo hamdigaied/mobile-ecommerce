@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react';
 import { Alert, Image, Text, TouchableWithoutFeedback, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import axios from 'axios';
-import { BASE_URL, DEVICE_WIDTH } from "../../config/env"
+import { API_TOKEN, BASE_URL, DEVICE_WIDTH } from "../../config/env"
 import Carousel from 'react-native-reanimated-carousel';
 import Loader from '../../components/Loader';
 import { Entypo } from '@expo/vector-icons';
+import shimmer from './../../assets/shimmer.png'
 
 export default function Details() {
     const [loading, setLoading] = useState(true)
@@ -16,7 +17,9 @@ export default function Details() {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`${BASE_URL}/items/products/${id}?fields=*,brand.*,images.directus_files_id`)
+        axios.get(`${BASE_URL}/api/products/${id}?populate[brand][populate][0]=logo&populate[images]=*`, {
+            headers: { Authorization: `Bearer ${API_TOKEN}` }
+        })
             .then(res => { setProduct(res.data.data); setLoading(false) })
             .catch(err => { console.error(err); setLoading(false) })
     }, [id])
@@ -43,16 +46,20 @@ export default function Details() {
                                         scrollAnimationDuration={1000}
                                         renderItem={({ item }) => (
                                             <Image
-                                                key={item.directus_files_id}
+                                                alt='Product carousel image'
+                                                defaultSource={shimmer}
+                                                key={item.id}
                                                 style={{ height: 400 }}
-                                                source={{ uri: `${BASE_URL}/assets/${item.directus_files_id}` }}
+                                                source={{ uri: `${BASE_URL}/${item.url}` }}
                                             />
                                         )}
                                     />
                                     :
                                     <Image
+                                        alt='Product image'
+                                        defaultSource={shimmer}
                                         style={{ width: DEVICE_WIDTH, height: 400 }}
-                                        source={{ uri: `${BASE_URL}/assets/${product.images[0].directus_files_id}` }}
+                                        source={{ uri: `${BASE_URL}/${product.images[0].url}` }}
                                     />
                             }
                             <View style={{ textAlign: "left", padding: 10 }}>
@@ -60,8 +67,9 @@ export default function Details() {
                                 <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
                                     <Text style={{ fontSize: 25, fontWeight: "500" }}>{product?.name}</Text>
                                     <Image
+                                        alt='Brand'
                                         style={{ width: 50, height: 50 }}
-                                        source={{ uri: `${BASE_URL}/assets/${product.brand.logo}` }}
+                                        source={{ uri: `${BASE_URL}/${product.brand.logo.url}` }}
                                     />
 
                                 </View>

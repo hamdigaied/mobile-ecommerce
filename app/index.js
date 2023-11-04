@@ -3,7 +3,7 @@ import Card from '../components/Card';
 import Banner from '../components/Banner';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { BASE_URL } from '../config/env'
+import { API_TOKEN, BASE_URL } from '../config/env'
 import Loader from '../components/Loader';
 
 export default function Main() {
@@ -11,7 +11,9 @@ export default function Main() {
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/items/products?fields=*,images.directus_files_id`)
+        axios.get(`${BASE_URL}/api/products?populate=*`, {
+            headers: { Authorization: `Bearer ${API_TOKEN}` }
+        })
             .then(res => { setProducts(res.data.data); setLoading(false) })
             .catch(err => { console.error(err); setLoading(false) })
     }, [])
@@ -33,7 +35,7 @@ export default function Main() {
                                         name={product.name}
                                         price={product.price}
                                         discount={product.discount}
-                                        image={product.images[0].directus_files_id}
+                                        image={product.images[0].url}
                                     />
                                 ))
                             }
