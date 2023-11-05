@@ -24,7 +24,7 @@ export default function Main() {
             {
                 !loading &&
                 <>
-                    <ScrollView>
+                    <ScrollView showsVerticalScrollIndicator={false}>
                         <Banner content="Featured products" />
                         <View style={{ rowGap: 10, padding: 10, display: "flex", flexWrap: "wrap", justifyContent: "space-between", flexDirection: "row" }}>
                             {

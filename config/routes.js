@@ -42,7 +42,6 @@ const routes = [
             ...headerConfig,
             href: null
         }
-        
     }
 ]
 

@@ -7,7 +7,7 @@ import { API_TOKEN, BASE_URL, DEVICE_WIDTH } from "../../config/env"
 import Carousel from 'react-native-reanimated-carousel';
 import Loader from '../../components/Loader';
 import { Entypo } from '@expo/vector-icons';
-import shimmer from './../../assets/shimmer.png'
+import shimmer from '../../assets/shimmer.png'
 
 export default function Details() {
     const [loading, setLoading] = useState(true)
