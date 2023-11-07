@@ -95,7 +95,7 @@ export default function Products() {
                                             id={category.id}
                                             name={category.name}
                                             icon={category.icon.url}
-                                            filters={filters}
+                                            type="category"
                                             setFilters={setFilters}
                                         />
                                     ))
@@ -121,7 +121,7 @@ export default function Products() {
                             </View>
                         </ScrollView>
                     }
-                    <PresentationModal isVisible={isModalVisible} closeModal={closeModal} />
+                    <PresentationModal isVisible={isModalVisible} closeModal={closeModal} setFilters={setFilters} />
                 </>
             }
         </View>

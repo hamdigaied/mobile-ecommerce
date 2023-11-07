@@ -26,19 +26,61 @@ export default function Main() {
                 <>
                     <ScrollView showsVerticalScrollIndicator={false}>
                         <Banner content="Featured products" />
-                        <View style={{ rowGap: 10, padding: 10, display: "flex", flexWrap: "wrap", justifyContent: "space-between", flexDirection: "row" }}>
-                            {
-                                products.map(product => (
-                                    <Card
-                                        key={product.id}
-                                        id={product.id}
-                                        name={product.name}
-                                        price={product.price}
-                                        discount={product.discount}
-                                        image={product.images[0].url}
-                                    />
-                                ))
-                            }
+                        <View style={{ display: "flex", flexDirection: "row", padding: 10 }}>
+                            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                                {
+                                    products.filter(product => product.featured)
+                                        .map(product => (
+                                            <Card
+                                                key={product.id}
+                                                id={product.id}
+                                                name={product.name}
+                                                price={product.price}
+                                                discount={product.discount}
+                                                image={product.images[0].url}
+                                                source="home"
+                                            />
+                                        ))
+                                }
+                            </ScrollView>
+                        </View>
+                        <Banner content="Best seller" />
+                        <View style={{ display: "flex", flexDirection: "row", padding: 10 }}>
+                            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                                {
+                                    products.filter(product => product.best_seller)
+                                        .map(product => (
+                                            <Card
+                                                key={product.id}
+                                                id={product.id}
+                                                name={product.name}
+                                                price={product.price}
+                                                discount={product.discount}
+                                                image={product.images[0].url}
+                                                source="home"
+                                            />
+                                        ))
+                                }
+                            </ScrollView>
+                        </View>
+                        <Banner content="Top promos" />
+                        <View style={{ display: "flex", flexDirection: "row", padding: 10 }}>
+                            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                                {
+                                    products.filter(product => product.discount != 0)
+                                        .map(product => (
+                                            <Card
+                                                key={product.id}
+                                                id={product.id}
+                                                name={product.name}
+                                                price={product.price}
+                                                discount={product.discount}
+                                                image={product.images[0].url}
+                                                source="home"
+                                            />
+                                        ))
+                                }
+                            </ScrollView>
                         </View>
                     </ScrollView>
                 </>

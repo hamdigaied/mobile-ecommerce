@@ -7,7 +7,7 @@ import { API_TOKEN, BASE_URL, DEVICE_WIDTH } from '../config/env';
 import Category from './Category';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
-const PresentationModal = ({ isVisible, closeModal }) => {
+const PresentationModal = ({ isVisible, closeModal, setFilters }) => {
     const [loading, setLoading] = useState(true)
     const [brands, setBrands] = useState([])
     const [slider, setSlider] = useState([1, 100])
@@ -47,6 +47,8 @@ const PresentationModal = ({ isVisible, closeModal }) => {
                                                     id={brand.id}
                                                     name={brand.name}
                                                     icon={brand.logo.url}
+                                                    type="brand"
+                                                    setFilters={setFilters}
                                                 />
                                             ))
                                         }

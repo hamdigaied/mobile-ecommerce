@@ -3,13 +3,14 @@ import { BASE_URL } from "../config/env"
 import shimmer from './../assets/shimmer.png'
 import { useEffect, useState } from "react"
 
-function Category({ id, name, icon, filters, setFilters }) {
+function Category({ id, name, icon, type, setFilters }) {
     const [applied, setApplied] = useState(false)
 
     useEffect(() => {
-        applied ?
-            setFilters(prev => [...prev, id]) :
-            setFilters(prev => [...prev.filter(p => p !== id)])
+        if (type === "category")
+            applied ?
+                setFilters(prev => [...prev, id]) :
+                setFilters(prev => [...prev.filter(p => p !== id)])
     }, [applied])
 
     return (
