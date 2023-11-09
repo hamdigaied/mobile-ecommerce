@@ -20,6 +20,10 @@ const PresentationModal = ({ isVisible, closeModal, setFilters }) => {
             .catch(err => { console.error(err); setLoading(false) })
     }, [])
 
+    const applyFilters = () => {
+        console.log(localFilters);
+    }
+
     return (
         <Modal
             isVisible={isVisible}
@@ -27,6 +31,7 @@ const PresentationModal = ({ isVisible, closeModal, setFilters }) => {
             onSwipeComplete={closeModal} // Callback when swiped down
             onBackdropPress={closeModal}
             propagateSwipe={true}
+            
             style={{ margin: 0, justifyContent: 'flex-end' }} // Position at the bottom
         >
             <View style={{ backgroundColor: 'white', height: "50%", padding: 10, borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
@@ -70,7 +75,7 @@ const PresentationModal = ({ isVisible, closeModal, setFilters }) => {
                                 />
                             </View>
                         </View>
-                        <TouchableWithoutFeedback onPress={() => Alert.alert("Applying filters")}>
+                        <TouchableWithoutFeedback onPress={applyFilters}>
                             <View style={{ flexDirection: 'row', justifyContent: "center", marginTop: 10 }}>
                                 <View style={{ backgroundColor: "orange", padding: 10, borderRadius: 10 }}>
                                     <Text style={{ fontSize: 20 }}>Apply</Text>

@@ -15,7 +15,7 @@ export default function Products() {
     const [categories, setCategories] = useState([])
     const [products, setProducts] = useState([])
     const [filteredProducts, setFilteredProducts] = useState([])
-    const [filters, setFilters] = useState([])
+    const [filters, setFilters] = useState({ category: [], brand: [] })
 
     useEffect(() => {
         const getData = async () => {
@@ -55,7 +55,16 @@ export default function Products() {
     }
 
     useEffect(() => {
-        console.log("filters", filters);
+        console.log("filters to apply", filters);
+        if (filters.category.length > 0) {
+            const f = products.filter(fp => filters.category.some(c => fp.categories.map(cc => cc.id).includes(c)))
+            setFilteredProducts(f)
+        } else if (filters.brand.length > 0) {
+            const f = products.filter(fp => filters.brand.some(c => fp.brand.id === c))
+            setFilteredProducts(f)
+        } else {
+            setFilteredProducts(products)
+        }
     }, [filters])
 
     return (

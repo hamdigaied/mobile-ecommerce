@@ -7,10 +7,15 @@ function Category({ id, name, icon, type, setFilters }) {
     const [applied, setApplied] = useState(false)
 
     useEffect(() => {
-        if (type === "category")
-            applied ?
-                setFilters(prev => [...prev, id]) :
-                setFilters(prev => [...prev.filter(p => p !== id)])
+        if (applied) {
+            setFilters((prevFilters) => {
+                return { ...prevFilters, [type]: [...prevFilters[type], id] };
+            });
+        } else {
+            setFilters((prevFilters) => {
+                return { ...prevFilters, [type]: [...prevFilters[type].filter(c => c != id)] };
+            });
+        }
     }, [applied])
 
     return (
